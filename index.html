@@ -14,81 +14,78 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <style>
-        .main-scroll-div {
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 55%;
-            width: 100%;
-            border: 2px solid red;
-            overflow-y: scroll;
-            overflow-x: scroll;
-        }
-
-        .cover {
-            height: 100%;
-            width: 100%;
-            position: relative;
-            object-fit: cover;
-        }
-
-        .scroll-images {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-auto-rows: minmax(0, 1fr);
-            gap: 10px;
-            scroll-snap-type: x mandatory; ;
-            overflow: auto;
-            scroll-behavior: smooth;
-            width: 100%;
-            white-space: nowrap;
-        }
-
-        .child {
-            /* set width of each child element to 1/5th of the container */
-            width: calc((100% - 40px) / 5);
-            margin: 0;
-            align-self: start;
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            vertical-align: top;
-            scroll-snap-align: center;
-        }
-
-        .child-img {
-            width: 100%;
-            height: 100%;
-            padding: 5px;
-            object-fit: cover;
-        }
-
-        input[name="image"] {
-            display: none;
-        }
-
-        input[type="radio"]:checked+label>.child-img {
-            border: 2px solid rgb(27, 48, 182);
-        }
-
-        input[type="radio"]:checked+label {
-            scroll-snap-align: start;
-        }
-
-        .scroll-images::-webkit-scrollbar {
-            /* display: none; */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-auto-rows: 300px;
-            gap: 10px;
-            overflow: auto;
-            max-height: calc(85% - 16px);
-            /* 16px is the total padding of the main-scroll-div */
-            scroll-behavior: smooth;
-        }
-    </style>
+        <style>
+            .main-scroll-div {
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                scroll-snap-type: x mandatory;
+                overflow-x: scroll ;
+                overflow-y: scroll;
+                justify-content: center;
+                height: 34%;
+                width: 65%;
+            }
+    
+    
+            .child {
+                width: calc((100% - 40px) / 5);
+                margin: 0;
+                align-self: start;
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                vertical-align: top;
+                scroll-snap-align: center;
+            }
+            
+            .cover {
+                width: 44rem;
+                height: 100%;
+                position: relative;
+                object-fit: cover;
+            }
+            .child-img {
+                width: 43rem;
+                height: 100%;
+                padding: 1px;
+                object-fit: cover;
+            }
+    
+            .scroll-images {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-auto-rows: minmax(0, 1fr);
+                /* scroll-snap-type: x mandatory;
+                overflow-x: scroll;
+                overflow-y: scroll; */
+                scroll-behavior: smooth;
+                width: 100%;
+                white-space: nowrap;
+            }
+    
+            input[name="image"] {
+                display: none;
+            }
+    
+            input[type="radio"]:checked+label>.child-img {
+                border: 2px solid rgb(27, 48, 182);
+            }
+    
+            input[type="radio"]:checked+label {
+                scroll-snap-align: start;
+            }
+    
+            .scroll-images::-webkit-scrollbar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-auto-rows: 300px;
+                overflow: auto;
+                max-height: calc(85% - 16px);
+                scroll-behavior: smooth;
+            }
+        </style>
+    
 
 </head>
 
@@ -106,37 +103,10 @@
                     <option value="500">500X</option>
                 </select>
             </div>
-
-            <div class="col--md-4">
-                <label for="objectivelense" class="form-label">Eyepiece </label>
-                <input type="radio" checked disabled>10X</input>
-            </div>
-
-            <div class="col-md-4">
-                <label class="form-label">Objective Lens</label>
-                <div>
-                    <input type="radio" id="lense10" name="objectiveLense" value="10" class="form-check-input">
-                    <label for="lense10" class="form-check-label">10X</label>
-                </div>
-                <div>
-                    <input type="radio" id="lense20" name="objectiveLense" value="20" class="form-check-input">
-                    <label for="lense20" class="form-check-label">20X</label>
-                </div>
-                <div>
-                    <input type="radio" id="lense50" name="objectiveLense" value="50" class="form-check-input">
-                    <label for="lense50" class="form-check-label">50X</label>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <!-- This button only checking lense compatible or not it does not care about image -->
-                <button type="button" id="checkCompatibilityButton" class="btn btn-primary"
-                    onclick="checkCompatibility()">Check Lense compatibility
-                </button>
-            </div>
-
+ 
 
             <div class="">
+                <p>Scroll for image :</p>
                 <div class="main-scroll-div">
                     <div class="cover">
                         <div class="scroll-images">
@@ -178,16 +148,9 @@
                                 <label for="image8"><img class="child-img" src="images\100x\2.jpg" class="slide"
                                         alt="image"></label>
                             </div> -->
-
                         </div>
                     </div>
                 </div>
-                <!--for both image and lense checking 
-                    if lense fail so do not check image if image correct then check image
-                    this button is enough remove above submit button-->
-                <button type="button" onclick="completeCompactibilityCheck()"
-                    class="btn btn-primary m-3">Submit</button>
-
             </div>
         </form>
     </div>
@@ -195,8 +158,10 @@
 
 
 
-    <script>
 
+
+
+    <script>
         // this will use in event listner 
         const magnificationSelect = document.querySelector('#magnification');
         const objectiveRadios = document.querySelectorAll('input[name="objectiveLense"]');
@@ -274,108 +239,6 @@
                 }
             }
         });
-
-
-        // check lense compatibility though onclick 
-        function checkCompatibility() {
-            const magnificationSelect = document.querySelector('#magnification');
-            const objectiveRadios = document.querySelectorAll('input[name="objectiveLense"]');
-            const selectedMagnification = parseInt(magnificationSelect.value);
-            let selectedObjective;
-
-            objectiveRadios.forEach((radio) => {
-                if (radio.checked) {
-                    selectedObjective = parseInt(radio.value);
-                }
-            });
-            if (selectedObjective === undefined) {
-                alert("Please Choose a objective lense")
-            } else {
-                if (selectedMagnification === 100 && selectedObjective === 10) {
-                    alert('Magnification and objective lens are compatible');
-                } else if (selectedMagnification === 200 && selectedObjective === 20) {
-                    alert('Magnification and objective lens are compatible');
-                } else if (selectedMagnification === 500 && selectedObjective === 50) {
-                    alert('Magnification and objective lens are compatible');
-                } else {
-                    alert('Error: Magnification and objective lens are not compatible');
-                }
-            }
-
-        }
-
-        function completeCompactibilityCheck() {
-            const magnificationSelect = document.querySelector('#magnification');
-            const objectiveRadios = document.querySelectorAll('input[name="objectiveLense"]');
-            const selectedMagnification = parseInt(magnificationSelect.value);
-            let selectedObjective;
-
-            objectiveRadios.forEach((radio) => {
-                if (radio.checked) {
-                    selectedObjective = parseInt(radio.value);
-                }
-            });
-
-            if (selectedObjective === undefined) {
-                alert("Please Choose a objective lense")
-            } else {
-                if (selectedMagnification === 100 && selectedObjective === 10) {
-                    alert('Magnification and objective lens are compatible');
-                    checkingImage();
-                } else if (selectedMagnification === 200 && selectedObjective === 20) {
-                    alert('Magnification and objective lens are compatible');
-                    checkingImage();
-                } else if (selectedMagnification === 500 && selectedObjective === 50) {
-                    alert('Magnification and objective lens are compatible');
-                    checkingImage();
-                } else {
-                    alert('Error: Magnification and objective lens are not compatible');
-                }
-            }
-
-        }
-
-        function checkingImage() {
-            let selectedObjective;
-            objectiveRadios.forEach((radio) => {
-                if (radio.checked) {
-                    selectedObjective = parseInt(radio.value);
-                }
-            });
-
-            if (selectedObjective === undefined) {
-                alert("Please Choose a objective lense")
-            } else {
-                let selectedImageRadio;
-                const imageRadios = document.querySelectorAll('input[name="image"]');
-
-                imageRadios.forEach((radio) => {
-                    if (radio.checked) {
-                        selectedImageRadio = true;
-                        const selectedObjectiveLens = document.querySelector('input[name="objectiveLense"]:checked').value; // get the selected radio button value
-                        const selectedMagnification = document.getElementById('magnification').value; // get the selected magnification value
-
-                        const selectedImageValue = document.querySelector('input[name="image"]:checked').value;
-                        // get the selected image value
-                        console.log(selectedImageValue)
-
-                        const totalMagnification = selectedMagnification * selectedObjectiveLens; // calculate the total magnification
-                        if (selectedImageValue == totalMagnification) {
-                            // alert(`Selected Image: ${selectedImageValue}\nTotal Magnification: ${totalMagnification}`); // display the selected image and total magnification
-                            alert("You have selelected Correct image")
-                        }
-                        else {
-                            // alert(`Selected Image: ${selectedImageValue}\nTotal Magnification: ${totalMagnification}`); // display the selected image and total magnification
-                            alert("Error: Incorrect image")
-                        }
-                    }
-                });
-                if (selectedImageRadio == undefined) {
-                    alert("Please Select Image")
-                }
-            }
-        }
-
     </script>
 
 </body>
